@@ -1,3 +1,3 @@
-# System Saver version check
+# Crestron Recovery version check
 
-This repo holds one file, `version.json`, which CTI's System Saver reads at start-up to learn whether a newer version exists. The program itself, its source and its setup live in Azure DevOps (CTI-AV / Skunkworks / System-Saver); `url` is where the program's Download button sends people. Update `version` only after the new setup is merged to `main` there. The rules for the file are in that repo's README, under *Releasing a version*.
+This repo holds one file, `version.json`, which CTI's Crestron Recovery reads at start-up to learn whether a newer version exists (System Saver 0.1.0 to 0.3.1 read it too, under this repo's old name system-saver-version-check, which GitHub redirects here). The program itself, its source and its setup live in Azure DevOps (CTI-AV / Skunkworks / Crestron-Recovery); `url` is where the program's Download button sends people. Update `version` only after the new setup is merged to `main` there. The rules for the file are in that repo's README, under *Releasing a version*.
