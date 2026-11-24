@@ -1,6 +1,6 @@
 # Crestron Recovery
 
-**[Download CTI Crestron Recovery Setup v0_6_0.exe](https://dev.azure.com/CTI-AV/Skunkworks/_apis/git/repositories/Crestron-Recovery/items?path=/dist/CTI%20Crestron%20Recovery%20Setup%20v0_6_0.exe&versionDescriptor.version=main&versionDescriptor.versionType=branch&download=true&%24format=octetStream&api-version=7.1)**
+**[Download CTI Crestron Recovery Setup v0_7_0.exe](https://dev.azure.com/CTI-AV/Skunkworks/_apis/git/repositories/Crestron-Recovery/items?path=/dist/CTI%20Crestron%20Recovery%20Setup%20v0_7_0.exe&versionDescriptor.version=main&versionDescriptor.versionType=branch&download=true&%24format=octetStream&api-version=7.1)**
 (run it once; it installs for all users, and a newer setup upgrades in place)
 
 Formerly **System Saver** (0.1.0 to 0.3.1): installing 0.4.0 or later over it
@@ -95,13 +95,26 @@ while it is empty). Its help icon shows the layout:
 A folder is made only when there is something to put in it. A hosted Web
 XPanel or CH5 project is saved laid out as it is on the processor (and
 rebuilt beside it, for a Web XPanel); the processor's own loose `HTML` files
-are not saved -- a project loaded onto it writes them again. After *Pull* or
-a blue arrow the zip is offered: Yes puts the whole root folder into
+are not saved -- a project loaded onto it writes them again.
+
+Every arrow's pull confirms itself, start to end. While it runs, a small
+window shows its log lines as they come (a busy bar: a pull does not know
+its total until it ends); the first question at the end takes its place.
+After a green or blue arrow that saved a program archive, the archives are
+offered **extracted into the Control folder** (one Yes / No for all of them):
+each archive's files go flat beside its `.lpz` and `_archive.zip`, as a job
+repo's `Control` folder holds them, and never over a different file -- an
+archive with a clash goes into its own `SlotNN_<name>_archive` folder. Then
+the zip is offered: Yes puts the whole root folder into
 `<root>\<root's name>.zip`, beside `Control` and `Interface`, to hand over
 (an earlier zip in the root is left out of it). *Zip*, on the root row, does
 the same at any time. Once a pull's questions are answered, its own log lines
 are written into the root as `Crestron-Recovery_<tab>_log_<date>_<time>.log` (the
-name *Export...* proposes), and into the zip too when one is made.
+name *Export...* proposes), and into the zip too when one is made. Then a
+**report** opens: the rebuild's when the pull rebuilt something, else the
+pull's own (the root and zip, the pull's warnings and errors, its log lines).
+Its **Done** opens the root in Explorer, the zip selected when one was made,
+else `Control` (green arrow) or `Interface` (orange); its X only closes it.
 
 The table's first column holds pull arrows in the tabs' colours: a touch
 panel has a blue one (its full system) and an orange one (the panel only); a
@@ -134,8 +147,9 @@ alone and `Slot01_<name> (from <address>).lpz` written instead). Empty slots
 are named in the log; a slot whose program does not read whole (a `.bin` cut
 short, no `.dsc`, no signal names) is still saved and warned about. A slot
 that carries SIMPL's own archive of the project gives it beside the `.lpz` as
-`Slot01_<name>_archive.zip`, kept zipped (*File > Import Archived Program* in
-SIMPL Windows). The user name is remembered; the password is kept DPAPI-protected.
+`Slot01_<name>_archive.zip` (*File > Import Archived Program* in SIMPL
+Windows), and the pull's end offers it extracted beside it (see above). The
+user name is remembered; the password is kept DPAPI-protected.
 
 **After the pull, one question** lists that controller's slots with no
 archive, each ticked (a System pull asks it too, once per controller, when
@@ -249,8 +263,9 @@ dropped on the window switches to Touch Panel.
    what no rebuild brings back, and every line of the rebuild in small print
    for debugging (each line labelled in words: *Error* red, *Warning* yellow, *Info* blue, *Note* and *Detail* plain). The paths are
    links: the `.vtp` opens in VTPro-e, *open folder* and the `.vtz` / `.sgd`
-   paths open their folder. *Save .md...* keeps it; *...* > *Results report...* shows
-   the last one again.
+   paths open their folder. *Save .md...* keeps it; **Done** shows the rebuilt
+   `.vtp` in Explorer (after a pull: the root folder); *...* > *Results report...*
+   shows the last one again.
 5. **A custom theme comes back with the panel.** When the panel uses a theme
    that is not installed on this PC (a custom one, or a Crestron theme the
    Crestron Database here lacks), the rebuild takes the theme's files out of
